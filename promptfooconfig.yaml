@@ -6,9 +6,10 @@ prompts:
   - "{{system}}\n\n사용자: {{question}}"
 
 # 비교할 모델 3단 (로컬 / 무료 클라우드 2종)
+# D-7 점검: Gemini는 최신 무료 flash 모델 ID 확인 후 갱신 (gemini-2.5-flash는 2026-07-16 동작 확인)
 providers:
   - google:gemini-2.5-flash
-  - groq:llama-3.1-8b-instant
+  - groq:openai/gpt-oss-20b   # llama-3.1-8b-instant는 2026-08-16 서비스 종료 → Groq 공식 권장 대체
   - ollama:chat:gemma3:4b
 
 # 채점관(judge)을 flash로 고정 — 기본값(gemini-2.5-pro)은 무료 사용량을 빨리 소모함

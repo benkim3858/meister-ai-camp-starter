@@ -60,7 +60,7 @@ BACKENDS = [
         "name": "Groq (무료 클라우드)",
         "base_url": "https://api.groq.com/openai/v1",
         "api_key_env": "GROQ_API_KEY",
-        "model": "llama-3.1-8b-instant",
+        "model": "openai/gpt-oss-20b",
     },
     {
         "name": "Ollama (내 컴퓨터)",
