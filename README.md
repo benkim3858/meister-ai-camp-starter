@@ -1,5 +1,9 @@
 # AI 캠프 챗봇 스타터 (Gradio Starter)
 
+> ## 📌 캠프 노션 허브 (수업 자료·명령어 전부 여기)
+> ### 👉 **https://tinyurl.com/meister-aicamp**
+> 전체 주소: https://curly-ringer-cfd.notion.site/AI-39eb4453362481a8a652cbbd9c6a8382
+
 **받자마자 실행되는 챗봇**입니다. 여러분은 챗봇 껍데기를 코딩하는 대신,
 파일 맨 위의 세 가지(이름·시스템 프롬프트·참고 문서)를 바꿔서
 **자기 팀의 AI 서비스**를 만듭니다. 이 세 가지를 설계하는 일이 바로
