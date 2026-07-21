@@ -1,0 +1,62 @@
+{
+  "name": "스톡브리핑 AI 에이전트 (캠프 예제)",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [0, 0],
+      "id": "cc347045-cc4e-4a57-acf6-65b51d6732b8",
+      "name": "When chat message received",
+      "webhookId": "f520ad84-1142-4d25-bd22-1e4bf84e6841"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "너는 대덕SW마이스터고 학생들이 만든 스톡브리핑 상담봇이다. 국내 주식 시세와 용어를 존댓말로 짧게 설명한다. 투자 권유나 추천은 절대 하지 않는다. 자료에 없는 것은 \"확인 불가\"라고 답한다."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [208, 0],
+      "id": "755004d7-c617-4a9e-8457-bae9c7941a8c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [224, 112],
+      "id": "7bad56ee-4d75-48ea-ae5c-563033b0a4e0",
+      "name": "Google Gemini Chat Model"
+    },
+    {
+      "parameters": {
+        "toolDescription": "크래프톤(게임 회사) 주식의 실시간 시세를 조회한다. 사용자가 크래프톤 주가나 시세를 물으면 이 도구를 사용한다.",
+        "url": "https://m.stock.naver.com/api/stock/259960/basic",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [368, 208],
+      "id": "4ba03ba3-266c-45bd-b8bc-e18b45f8c0d2",
+      "name": "HTTP Request"
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [[{ "node": "AI Agent", "type": "main", "index": 0 }]]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [[{ "node": "AI Agent", "type": "ai_languageModel", "index": 0 }]]
+    },
+    "HTTP Request": {
+      "ai_tool": [[{ "node": "AI Agent", "type": "ai_tool", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" }
+}
